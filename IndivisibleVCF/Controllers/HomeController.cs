@@ -10,6 +10,8 @@ namespace IndivisibleVCF.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "There's so much stuff out the box in this is app that I'm kinda lost.";
+
             return View();
         }
 
