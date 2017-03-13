@@ -16,7 +16,7 @@ namespace IndivisibleVCF.Data
             Database.SetInitializer(new IndivisibleInitializer());
         }
 
-        public DbSet<ApplicationUser> Students { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

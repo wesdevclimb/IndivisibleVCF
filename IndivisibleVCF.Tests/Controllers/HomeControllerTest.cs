@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IndivisibleVCF;
 using IndivisibleVCF.Controllers;
+using IndivisibleVCF.Models;
 
 namespace IndivisibleVCF.Tests.Controllers
 {
@@ -26,26 +27,15 @@ namespace IndivisibleVCF.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public void Index(ApplicationUser user)
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.About() as ViewResult;
-
-            // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        }
-
-        [TestMethod]
-        public void Contact()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
