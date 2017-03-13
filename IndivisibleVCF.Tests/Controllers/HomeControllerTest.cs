@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IndivisibleVCF;
 using IndivisibleVCF.Controllers;
 using IndivisibleVCF.Models;
+using Xunit.Sdk;
 
 namespace IndivisibleVCF.Tests.Controllers
 {
@@ -25,17 +26,15 @@ namespace IndivisibleVCF.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
+        
         [TestMethod]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public void Index(ApplicationUser user)
+        public void App()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.GenerateVcf() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

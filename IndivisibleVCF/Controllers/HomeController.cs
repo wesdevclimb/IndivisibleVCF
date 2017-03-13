@@ -29,5 +29,13 @@ namespace IndivisibleVCF.Controllers
             ViewBag.Message = "Your contact page.";
             return View();
         }
+
+        //The Authorize Attribute is not enough security
+        //I need to protect from signed in users attempting to access other user data through this route
+        [Authorize]
+        public ViewResult GenerateVcf()
+        {
+            return View();
+        }
     }
 }
