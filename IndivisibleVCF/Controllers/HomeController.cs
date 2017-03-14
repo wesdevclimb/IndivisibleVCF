@@ -5,6 +5,9 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.Web;
 using System.Web.Mvc;
+using IndivisibleVCF.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IndivisibleVCF.Controllers
 {
@@ -38,8 +41,22 @@ namespace IndivisibleVCF.Controllers
             return View();
         }
 
+        [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        public ViewResult GenerateVcf(GenerateVcfViewModel model)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var userZip = currentUser.ZipCode;
+
+            GenerateVcfViewModel generateVcfViewModel = new GenerateVcfViewModel() { ZipCode = userZip };
+
+            return View(generateVcfViewModel);
+        }
+
+        [Authorize]
         public ViewResult GeneratedResultVcf()
         {
             return View();
