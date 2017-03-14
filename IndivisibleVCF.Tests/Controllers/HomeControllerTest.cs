@@ -28,7 +28,7 @@ namespace IndivisibleVCF.Tests.Controllers
         }
         
         [TestMethod]
-        public void App()
+        public void GenerateVcf()
         {
             // Arrange
             HomeController controller = new HomeController();

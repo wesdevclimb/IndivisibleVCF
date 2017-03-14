@@ -31,9 +31,16 @@ namespace IndivisibleVCF.Controllers
         }
 
         //The Authorize Attribute is not enough security
-        //I need to protect from signed in users attempting to access other user data through this route
+        //I need to protect from signed in users attempting to access other user data other than their own
         [Authorize]
         public ViewResult GenerateVcf()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ViewResult GeneratedResultVcf()
         {
             return View();
         }
