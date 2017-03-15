@@ -1,5 +1,5 @@
 ﻿@using IndivisibleVCF.Models
-@model GenerateVcfViewModel
+@model GenerateVcfButtonViewModel
 @{
     ViewBag.Title = "GenerateVcf";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
 </div>
 <div class="row">
     <div>
-        @using (Html.BeginForm("GenerateVcf", "Home", FormMethod.Post))
+        @using (Html.BeginForm("GenerateVcfButton", "Home", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="form-group">

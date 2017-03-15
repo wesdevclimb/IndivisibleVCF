@@ -36,7 +36,7 @@ namespace IndivisibleVCF.Controllers
         //The Authorize Attribute is not enough security
         //I need to protect from signed in users attempting to access other user data other than their own
         [Authorize]
-        public ViewResult GenerateVcf()
+        public ViewResult GenerateVcfButton()
         {
             return View();
         }
@@ -44,20 +44,20 @@ namespace IndivisibleVCF.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ViewResult GenerateVcf(GenerateVcfViewModel model)
+        public ViewResult GenerateVcfButton(GenerateVcfButtonViewModel model)
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
 
-            GenerateVcfViewModel generateVcfViewModel = new GenerateVcfViewModel() { ZipCode = userZip };
+            GenerateVcfButtonViewModel generateVcfButtonViewModel = new GenerateVcfButtonViewModel() { ZipCode = userZip };
 
-            return View(generateVcfViewModel);
+            return View("GenerateVcfButtonResult");
         }
 
         [Authorize]
-        public ViewResult GeneratedResultVcf()
+        public ViewResult GenerateVcfButtonResult()
         {
             return View();
         }
