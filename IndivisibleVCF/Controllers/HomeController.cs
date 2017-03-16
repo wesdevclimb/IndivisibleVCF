@@ -64,9 +64,14 @@ namespace IndivisibleVCF.Controllers
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
-            
 
             return View();
         }
+
+        //TODO: Call the Sunlight API with userZip
+        //TODO: Parse JSON Data into C# Class objects
+        //TODO: Write individual vCards using the vCardLib classes
+        //TODO: Send individual vCard files upon button click
+
     }
 }
