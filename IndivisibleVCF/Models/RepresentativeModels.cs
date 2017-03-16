@@ -9,39 +9,95 @@ namespace IndivisibleVCF.Models
 
     public class ReprensentativeContactInfo
     {
-        public string bioguide_id { get; set; }
-        public string birthday { get; set; }
-        public string chamber { get; set; }
-        public object contact_form { get; set; }
-        public string crp_id { get; set; }
-        public int district { get; set; }
-        public string facebook_id { get; set; }
-        public string fax { get; set; }
-        public string[] fec_ids { get; set; }
-        public string first_name { get; set; }
-        public string gender { get; set; }
-        public string govtrack_id { get; set; }
-        public int icpsr_id { get; set; }
-        public bool in_office { get; set; }
-        public string last_name { get; set; }
-        public object leadership_role { get; set; }
-        public object middle_name { get; set; }
-        public object name_suffix { get; set; }
-        public object nickname { get; set; }
-        public string oc_email { get; set; }
-        public string ocd_id { get; set; }
-        public string office { get; set; }
-        public string party { get; set; }
-        public string phone { get; set; }
-        public string state { get; set; }
-        public string state_name { get; set; }
-        public string term_end { get; set; }
-        public string term_start { get; set; }
-        public string thomas_id { get; set; }
-        public string title { get; set; }
-        public string twitter_id { get; set; }
-        public int votesmart_id { get; set; }
-        public string website { get; set; }
-        public string youtube_id { get; set; }
+        [JsonProperty(propertyName:"bioguide_id")]
+        public string BioguideId { get; set; }
+        [JsonProperty(propertyName: "birthday")]
+        public string Birthday { get; set; }
+        [JsonProperty(propertyName: "chamber")]
+        public string Chamber { get; set; }
+        [JsonProperty(propertyName: "contact_form")]
+        public string ContactForm { get; set; }
+        [JsonProperty(propertyName: "crp_id")]
+        public string CrpId { get; set; }
+        [JsonProperty(propertyName: "district")]
+        public int District { get; set; }
+        [JsonProperty(propertyName: "facebook_id")]
+        public string FacebookId { get; set; }
+        [JsonProperty(propertyName: "fax")]
+        public string Fax { get; set; }
+        [JsonProperty(propertyName: "fec_ids")]
+        public string[] FecIds { get; set; }
+        [JsonProperty(propertyName: "first_name")]
+        public string FirstName { get; set; }
+        [JsonProperty(propertyName: "gender")]
+        public string Gender { get; set; }
+        [JsonProperty(propertyName: "govtrack_id")]
+        public string GovtrackId { get; set; }
+        [JsonProperty(propertyName: "icpsr_id")]
+        public int IcpsrId { get; set; }
+        [JsonProperty(propertyName: "in_office")]
+        public bool InOffice { get; set; }
+        [JsonProperty(propertyName: "last_name")]
+        public string LastName { get; set; }
+        [JsonProperty(propertyName: "leadership_role")]
+        public object LeadershipRole { get; set; }
+        [JsonProperty(propertyName: "middle_name")]
+        public object MiddleName { get; set; }
+        [JsonProperty(propertyName: "name_suffix")]
+        public object NameSuffix { get; set; }
+        [JsonProperty(propertyName: "nickname")]
+        public object Nickname { get; set; }
+        [JsonProperty(propertyName: "oc_email")]
+        public string OcEmail { get; set; }
+        [JsonProperty(propertyName: "ocd_id")]
+        public string OcdId { get; set; }
+        [JsonProperty(propertyName: "office")]
+        public string Office { get; set; }
+        [JsonProperty(propertyName: "party")]
+        public string Party { get; set; }
+        [JsonProperty(propertyName: "phone")]
+        public string Phone { get; set; }
+        [JsonProperty(propertyName: "state")]
+        public string State { get; set; }
+        [JsonProperty(propertyName: "state_name")]
+        public string StateName { get; set; }
+        [JsonProperty(propertyName: "term_end")]
+        public string TermEnd { get; set; }
+        [JsonProperty(propertyName: "term_start")]
+        public string TermStart { get; set; }
+        [JsonProperty(propertyName: "thomas_id")]
+        public string ThomasId { get; set; }
+        [JsonProperty(propertyName: "title")]
+        public string Title { get; set; }
+        [JsonProperty(propertyName: "twitter_id")]
+        public string TwitterId { get; set; }
+        [JsonProperty(propertyName: "votesmart_id")]
+        public int VotesmartId { get; set; }
+        [JsonProperty(propertyName: "website")]
+        public string Website { get; set; }
+        [JsonProperty(propertyName: "youtube_id")]
+        public string YoutubeId { get; set; }
+    }
+
+
+    public class RepresentativeSearchResult
+    {
+        [JsonProperty(propertyName: "results")]
+        public object[] Results { get; set; }
+        [JsonProperty(propertyName: "count")]
+        public int Count { get; set; }
+        [JsonProperty(propertyName: "page")]
+        public Page Page { get; set; }
+    }
+
+
+    public class Page
+    {
+        [JsonProperty(propertyName: "count")]
+        public int Count { get; set; }
+        [JsonProperty(propertyName: "per_page")]
+        public int PerPage { get; set; }
+        [JsonProperty(propertyName: "page")]
+        public int CurrentPage { get; set; }
     }
 }

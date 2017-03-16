@@ -39,5 +39,11 @@ namespace IndivisibleVCF.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod()]
+        public void GenerateVcfButtonResultTest()
+        {
+            Assert.Fail();
+        }
     }
 }
