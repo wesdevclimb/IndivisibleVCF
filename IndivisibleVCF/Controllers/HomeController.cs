@@ -66,16 +66,23 @@ namespace IndivisibleVCF.Controllers
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
 
+            GenerateVcfButtonResultViewModel generate = new GenerateVcfButtonResultViewModel()
+            {
+                ZipCode = userZip
+            };
+
             var webClient = new WebClient();
             byte[] result = webClient.DownloadData($"https://congress.api.sunlightfoundation.com/legislators/locate?zip={userZip}");
 
-            return View();
+            return View(generate);
         }
 
         //TODO: Call the Sunlight API with userZip
 
         //TODO: Parse JSON Data into C# Class objects
+
         //TODO: Write individual vCards using the vCardLib classes
+
         //TODO: Send individual vCard files upon button click
 
     }

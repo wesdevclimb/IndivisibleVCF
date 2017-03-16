@@ -62,14 +62,6 @@ namespace IndivisibleVCF.Models
         public bool RememberMe { get; set; }
     }
 
-    public class GenerateVcfButtonViewModel
-    {
-        [Required]
-        [DataType(DataType.PostalCode)]
-        [Display(Name = "Zip Code")]
-        public int ZipCode { get; set; }
-    }
-
     public class RegisterViewModel
     {
         [Required]
