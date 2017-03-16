@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -20,7 +21,7 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "crp_id")]
         public string CrpId { get; set; }
         [JsonProperty(propertyName: "district")]
-        public int District { get; set; }
+        public int? District { get; set; }
         [JsonProperty(propertyName: "facebook_id")]
         public string FacebookId { get; set; }
         [JsonProperty(propertyName: "fax")]
@@ -34,7 +35,7 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "govtrack_id")]
         public string GovtrackId { get; set; }
         [JsonProperty(propertyName: "icpsr_id")]
-        public int IcpsrId { get; set; }
+        public int? IcpsrId { get; set; }
         [JsonProperty(propertyName: "in_office")]
         public bool? InOffice { get; set; }
         [JsonProperty(propertyName: "last_name")]
@@ -72,7 +73,7 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "twitter_id")]
         public string TwitterId { get; set; }
         [JsonProperty(propertyName: "votesmart_id")]
-        public int VotesmartId { get; set; }
+        public int? VotesmartId { get; set; }
         [JsonProperty(propertyName: "website")]
         public string Website { get; set; }
         [JsonProperty(propertyName: "youtube_id")]
@@ -85,7 +86,7 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "results")]
         public ReprensentativeContactInfo[] Results { get; set; }
         [JsonProperty(propertyName: "count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
         [JsonProperty(propertyName: "page")]
         public Page Page { get; set; }
     }
@@ -94,10 +95,10 @@ namespace IndivisibleVCF.Models
     public class Page
     {
         [JsonProperty(propertyName: "count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
         [JsonProperty(propertyName: "per_page")]
-        public int PerPage { get; set; }
+        public int? PerPage { get; set; }
         [JsonProperty(propertyName: "page")]
-        public int CurrentPage { get; set; }
+        public int? CurrentPage { get; set; }
     }
 }
