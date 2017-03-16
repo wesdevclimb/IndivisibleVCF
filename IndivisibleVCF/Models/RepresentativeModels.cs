@@ -36,17 +36,17 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "icpsr_id")]
         public int IcpsrId { get; set; }
         [JsonProperty(propertyName: "in_office")]
-        public bool InOffice { get; set; }
+        public bool? InOffice { get; set; }
         [JsonProperty(propertyName: "last_name")]
         public string LastName { get; set; }
         [JsonProperty(propertyName: "leadership_role")]
-        public object LeadershipRole { get; set; }
+        public string LeadershipRole { get; set; }
         [JsonProperty(propertyName: "middle_name")]
-        public object MiddleName { get; set; }
+        public string MiddleName { get; set; }
         [JsonProperty(propertyName: "name_suffix")]
-        public object NameSuffix { get; set; }
+        public string NameSuffix { get; set; }
         [JsonProperty(propertyName: "nickname")]
-        public object Nickname { get; set; }
+        public string Nickname { get; set; }
         [JsonProperty(propertyName: "oc_email")]
         public string OcEmail { get; set; }
         [JsonProperty(propertyName: "ocd_id")]
@@ -83,7 +83,7 @@ namespace IndivisibleVCF.Models
     public class RepresentativeSearchResult
     {
         [JsonProperty(propertyName: "results")]
-        public object[] Results { get; set; }
+        public ReprensentativeContactInfo[] Results { get; set; }
         [JsonProperty(propertyName: "count")]
         public int Count { get; set; }
         [JsonProperty(propertyName: "page")]
