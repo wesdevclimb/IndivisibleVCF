@@ -36,23 +36,36 @@ namespace IndivisibleVCF.Controllers
             return View();
         }
 
+        //
+        //This was sort of a useless method that I wrote and it just ended up confusing me more than helping
+        //
+
+        //[HttpPost]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public ViewResult GenerateVcfButtonPost()
+        //{
+        //    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+        //    var currentUser = manager.FindById(User.Identity.GetUserId());
+        //    var userZip = currentUser.ZipCode;
+
+        //    var model = new GenerateVcfButtonViewModel() { ZipCode = userZip };
+
+        //    return View();
+        //}
+
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ViewResult GenerateVcfButtonPost()
+        public ViewResult GenerateVcfButtonResult()
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
+            
 
-
-            return GenerateVcfButtonResult(userZip);
-        }
-
-        [Authorize]
-        public ViewResult GenerateVcfButtonResult(int userZip)
-        {
             return View();
         }
     }
