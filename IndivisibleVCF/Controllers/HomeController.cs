@@ -15,21 +15,16 @@ namespace IndivisibleVCF.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "There's so much stuff out the box in this is app that I'm kinda lost.";
-
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
             return View();
         }
 
@@ -44,20 +39,19 @@ namespace IndivisibleVCF.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ViewResult GenerateVcfButton(GenerateVcfButtonViewModel model)
+        public ViewResult GenerateVcfButtonPost()
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
 
-            GenerateVcfButtonViewModel generateVcfButtonViewModel = new GenerateVcfButtonViewModel() { ZipCode = userZip };
 
-            return View("GenerateVcfButtonResult");
+            return GenerateVcfButtonResult(userZip);
         }
 
         [Authorize]
-        public ViewResult GenerateVcfButtonResult()
+        public ViewResult GenerateVcfButtonResult(int userZip)
         {
             return View();
         }

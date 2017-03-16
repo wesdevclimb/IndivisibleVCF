@@ -28,13 +28,13 @@ namespace IndivisibleVCF.Tests.Controllers
         }
         
         [TestMethod]
-        public void GenerateVcf()
+        public void GenerateVcfButton()
         {
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.GenerateVcf() as ViewResult;
+            ViewResult result = controller.GenerateVcfButton() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
