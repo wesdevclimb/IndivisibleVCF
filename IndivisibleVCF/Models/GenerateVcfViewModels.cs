@@ -12,5 +12,9 @@ namespace IndivisibleVCF.Models
         [DataType(DataType.PostalCode)]
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
+
+        [Required]
+        [Display(Name = "Representatives")]
+        public RepresentativeSearchResult RepresentativeSearchResult { get; set; }
     }
 }

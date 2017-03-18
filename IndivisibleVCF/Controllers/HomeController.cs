@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Security.Authentication;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using IndivisibleVCF.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
+using vCardLib;
 
 namespace IndivisibleVCF.Controllers
 {
@@ -63,23 +67,29 @@ namespace IndivisibleVCF.Controllers
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
 
+            GenerateVcfButtonResultViewModel generate = new GenerateVcfButtonResultViewModel();
+
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var userZip = currentUser.ZipCode;
 
-            GenerateVcfButtonResultViewModel generate = new GenerateVcfButtonResultViewModel()
-            {
-                ZipCode = userZip
-            };
+            generate.ZipCode = userZip;
 
             var webClient = new WebClient();
             byte[] result = webClient.DownloadData($"https://congress.api.sunlightfoundation.com/legislators/locate?zip={userZip}");
 
+            var values = "";
+            using (var stream = new MemoryStream(result))
+            using (var reader = new StreamReader(stream))
+            {
+               values = reader.ReadToEnd();
+            }
+
+            RepresentativeSearchResult resultObject = JsonConvert.DeserializeObject<RepresentativeSearchResult>(values);
+
+            generate.RepresentativeSearchResult = resultObject;
+
             return View(generate);
         }
-
-        //TODO: Call the Sunlight API with userZip
-
-        //TODO: Parse JSON Data into C# Class objects
 
         //TODO: Write individual vCards using the vCardLib classes
 

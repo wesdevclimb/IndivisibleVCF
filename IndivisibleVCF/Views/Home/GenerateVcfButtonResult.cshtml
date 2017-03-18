@@ -6,40 +6,19 @@
 
 <h2>Here you go!</h2>
 <p>Below are VCF files for all federal representatives for user zip code (@ViewData.Model.ZipCode)</p>
-<div class="container">
-    <div class="container">
-        <div class="row col-md-3">
-            <label for="downloadButton">Representative #1 Name</label>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row col-md-3">
-            <input name="downloadButton" id="downloadButton" type="button" value="Download File Result" class="btn btn-primary btn-lg" />
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="container">
-        <div class="row col-md-3">
-            <label for="downloadButton">Representative #2 Name</label>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row col-md-3">
-            <input name="downloadButton" type="button" value="Download File Result" class="btn btn-primary btn-lg" />
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="container">
-        <div class="row col-md-3">
-            <label for="downloadButton">Representative #3 Name</label>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row col-md-3">
-            <input name="downloadButton" type="button" value="Download File Result" class="btn btn-primary btn-lg" />
-        </div>
-    </div>
-</div>
 
+@foreach (var representative in Model.RepresentativeSearchResult.Results)
+{
+    <div class="container">
+        <div class="container">
+            <div class="row col-md-3">
+                <label for="downloadButton">@representative.FirstName @representative.LastName</label>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row col-md-3">
+                <input name="downloadButton" id="downloadButton" type="button" value="Download File Result" class="btn btn-primary btn-lg" />
+            </div>
+        </div>
+    </div>
+}
