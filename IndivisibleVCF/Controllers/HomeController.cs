@@ -1,10 +1,13 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Net.Security;
 using System.Security.Authentication;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
@@ -13,6 +16,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json;
 using vCardLib;
+using vCardLib.Serializers;
+using vCardLib.Collections;
+using vCardLib.Helpers;
 
 namespace IndivisibleVCF.Controllers
 {
@@ -63,6 +69,8 @@ namespace IndivisibleVCF.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
+        //This method should write the files and store them in Memory (TempData?) with an id that corresponds to the index in the array
+        //so that when then the download method is called, only an int id is passed as a parameter instead of a large complex object
         public ViewResult GenerateVcfButtonResult()
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -91,9 +99,16 @@ namespace IndivisibleVCF.Controllers
             return View(generate);
         }
 
-        //TODO: Write individual vCards using the vCardLib classes
+        //The VCF files should already be written and cached in memory
+        //The DownloadVcfFileResult should only recieve an (int)id 
+        [Authorize]
+        public FileResult DownloadVcfFileResult(ReprensentativeContactInfo reprensentativeContactInfo)
+        {
+            
+            byte[] bytes = new byte[1];
+            return File(bytes, "vcf");
 
-        //TODO: Send individual vCard files upon button click
-
+            //TODO: Serialize rep contect info into vCard and return FileResult
+        }
     }
 }

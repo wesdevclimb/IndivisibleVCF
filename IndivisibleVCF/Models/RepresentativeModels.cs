@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Newtonsoft.Json;
 
 namespace IndivisibleVCF.Models
@@ -78,6 +80,11 @@ namespace IndivisibleVCF.Models
         public string Website { get; set; }
         [JsonProperty(propertyName: "youtube_id")]
         public string YoutubeId { get; set; }
+
+        public string CreateVcfFileResult()
+        {
+            return "Class method";
+        }
     }
 
 
