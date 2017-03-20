@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Net.Mime;
 using System.Net.Security;
 using System.Security.Authentication;
@@ -19,6 +20,8 @@ using vCardLib;
 using vCardLib.Serializers;
 using vCardLib.Collections;
 using vCardLib.Helpers;
+using vCardLib.Models;
+using Version = vCardLib.Helpers.Version;
 
 namespace IndivisibleVCF.Controllers
 {
@@ -47,30 +50,9 @@ namespace IndivisibleVCF.Controllers
             return View();
         }
 
-        //
-        //This was sort of a useless method that I wrote and it just ended up confusing me more than helping
-        //
-
-        //[HttpPost]
-        //[Authorize]
-        //[ValidateAntiForgeryToken]
-        //public ViewResult GenerateVcfButtonPost()
-        //{
-        //    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-
-        //    var currentUser = manager.FindById(User.Identity.GetUserId());
-        //    var userZip = currentUser.ZipCode;
-
-        //    var model = new GenerateVcfButtonViewModel() { ZipCode = userZip };
-
-        //    return View();
-        //}
-
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        //This method should write the files and store them in Memory (TempData?) with an id that corresponds to the index in the array
-        //so that when then the download method is called, only an int id is passed as a parameter instead of a large complex object
         public ViewResult GenerateVcfButtonResult()
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -98,15 +80,15 @@ namespace IndivisibleVCF.Controllers
 
             return View(generate);
         }
-
-        //The VCF files should already be written and cached in memory
-        //The DownloadVcfFileResult should only recieve an (int)id 
+        
         [Authorize]
         public FileResult DownloadVcfFileResult(ReprensentativeContactInfo reprensentativeContactInfo)
         {
+
             
+
             byte[] bytes = new byte[1];
-            return File(bytes, "vcf");
+            return File(bytes, "text/vcard");
 
             //TODO: Serialize rep contect info into vCard and return FileResult
         }
