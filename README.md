@@ -1,7 +1,7 @@
 # IndivisibleVCF
-Web app that converts congressional contact info supplied from the Sunlight Foundation Congress API into downloadable VCF file 
+Web app that converts congressional contact info, supplied from the Sunlight Foundation Congress API, into downloadable VCF file 
 
-# How to Run
+# How to Run the App
 Clone the repo, navigate to the solution file, navigate to the "IndivisibleVCF" project, build the project, then run the app in visual studio.
 
 # How to use IndivisibleVCF
