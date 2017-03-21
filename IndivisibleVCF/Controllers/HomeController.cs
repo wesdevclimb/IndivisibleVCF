@@ -88,8 +88,8 @@ namespace IndivisibleVCF.Controllers
             byte[] bytes = Encoding.UTF8.GetBytes(vCard);
                 
             return File(bytes, "text/vcard");
-
-            //TODO: Serialize rep contect info into vCard and return FileResult
+            
+            //TODO: Implement personalized file info so that the name of the file corresponds to the individual representative
         }
     }
 }
