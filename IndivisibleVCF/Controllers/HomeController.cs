@@ -84,10 +84,9 @@ namespace IndivisibleVCF.Controllers
         [Authorize]
         public FileResult DownloadVcfFileResult(ReprensentativeContactInfo reprensentativeContactInfo)
         {
-
-            
-
-            byte[] bytes = new byte[1];
+            string vCard = reprensentativeContactInfo.BuildVCard();
+            byte[] bytes = Encoding.UTF8.GetBytes(vCard);
+                
             return File(bytes, "text/vcard");
 
             //TODO: Serialize rep contect info into vCard and return FileResult

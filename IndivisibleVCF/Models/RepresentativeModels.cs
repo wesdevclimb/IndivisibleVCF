@@ -7,6 +7,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using vCardLib;
+using vCardLib.Serializers;
 
 namespace IndivisibleVCF.Models
 {
@@ -87,19 +89,14 @@ namespace IndivisibleVCF.Models
             var strvCardBuilder = new StringBuilder();
             strvCardBuilder.AppendLine("BEGIN:VCARD");
             strvCardBuilder.AppendLine("VERSION:3.0");
-            strvCardBuilder.AppendLine("N:Gump;Forrest;;Mr.;");
-            strvCardBuilder.AppendLine("FN:Forrest Gump");
-            strvCardBuilder.AppendLine("ORG:Bubba Gump Shrimp Co.");
-            strvCardBuilder.AppendLine("TITLE:Shrimp Man");
-            strvCardBuilder.AppendLine("PHOTO;VALUE=URI;TYPE=GIF:http://www.example.com/dir_photos/my_photo.gif");
-            strvCardBuilder.AppendLine("TEL;TYPE=WORK,VOICE:(111) 555-1212");
-            strvCardBuilder.AppendLine("TEL;TYPE=HOME,VOICE:(404) 555-1212");
+            strvCardBuilder.AppendLine("N:"+ LastName +";" + FirstName + ";;" + Title + ";");
+            strvCardBuilder.AppendLine("FN:" + Title + " " + FirstName + " " + LastName);
+            strvCardBuilder.AppendLine("ORG:United States Federal Government");
+            strvCardBuilder.AppendLine("TITLE:" + Title);
+            strvCardBuilder.AppendLine("TEL;TYPE=WORK,VOICE:" + Phone);
             strvCardBuilder.AppendLine("ADR;TYPE=WORK,PREF:;;100 Waters Edge;Baytown;LA;30314;United States of America");
-            strvCardBuilder.AppendLine("LABEL;TYPE=WORK,PREF:100 Waters Edge\nBaytown\, LA 30314\nUnited States of America");
-            strvCardBuilder.AppendLine("ADR;TYPE=HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America");
-            strvCardBuilder.AppendLine("LABEL;TYPE=HOME:42 Plantation St.\nBaytown\, LA 30314\nUnited States of America");
-            strvCardBuilder.AppendLine("EMAIL:forrestgump@example.com");
-            strvCardBuilder.AppendLine("REV:" + DateTime.Now);
+            strvCardBuilder.AppendLine("LABEL;TYPE=WORK,PREF:" + Office);
+            strvCardBuilder.AppendLine("EMAIL:" + OcEmail);
             strvCardBuilder.AppendLine("END:VCARD");
 
             //var strvCardBuilder = new StringBuilder();
@@ -121,7 +118,9 @@ namespace IndivisibleVCF.Models
             //strvCardBuilder.AppendLine(string.Empty);
             //strvCardBuilder.AppendLine(string.Empty);
             //strvCardBuilder.AppendLine("END:VCARD");
-            //return strvCardBuilder.ToString();
+                     
+
+            return strvCardBuilder.ToString();
         }
     }
 
