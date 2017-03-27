@@ -85,9 +85,14 @@ namespace IndivisibleVCF.Controllers
         public FileResult DownloadVcfFileResult(ReprensentativeContactInfo reprensentativeContactInfo)
         {
             string vCard = reprensentativeContactInfo.BuildVCard();
+            string fileName = 
+                reprensentativeContactInfo.Title + 
+                reprensentativeContactInfo.FirstName +
+                reprensentativeContactInfo.LastName +
+                ".vcf";
             byte[] bytes = Encoding.UTF8.GetBytes(vCard);
                 
-            return File(bytes, "text/vcard");
+            return File(bytes, "text/vcard", fileName);
             
             //TODO: Implement personalized file info so that the name of the file corresponds to the individual representative
         }

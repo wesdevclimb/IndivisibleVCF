@@ -92,11 +92,25 @@ namespace IndivisibleVCF.Models
             strvCardBuilder.AppendLine("N:"+ LastName +";" + FirstName + ";;" + Title + ";");
             strvCardBuilder.AppendLine("FN:" + Title + " " + FirstName + " " + LastName);
             strvCardBuilder.AppendLine("ORG:United States Federal Government");
-            strvCardBuilder.AppendLine("TITLE:" + Title);
+            if (Title.ToLower() == "sen")
+            {
+                strvCardBuilder.AppendLine("TITLE:Senator");
+            }
+            else if (Title.ToLower() == "rep")
+            {
+                strvCardBuilder.AppendLine("TITLE:Congressman");
+            }
             strvCardBuilder.AppendLine("TEL;TYPE=WORK,VOICE:" + Phone);
-            strvCardBuilder.AppendLine("ADR;TYPE=WORK,PREF:;;100 Waters Edge;Baytown;LA;30314;United States of America");
             strvCardBuilder.AppendLine("LABEL;TYPE=WORK,PREF:" + Office);
             strvCardBuilder.AppendLine("EMAIL:" + OcEmail);
+            if (ContactForm != null)
+            {
+                strvCardBuilder.AppendLine("URL;VALUE=uri:" + ContactForm);
+            }
+            else if (Website != null)
+            {
+                strvCardBuilder.AppendLine("URL;VALUE=uri:" + Website);
+            }
             strvCardBuilder.AppendLine("END:VCARD");
 
             //var strvCardBuilder = new StringBuilder();
