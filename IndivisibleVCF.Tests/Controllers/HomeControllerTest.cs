@@ -78,7 +78,13 @@ namespace IndivisibleVCF.Tests.Controllers
                 }
             };
 
-            var file = controller.DownloadVcfFileResult(2);
+            var file = controller.DownloadVcfFileResult(new ReprensentativeContactInfo()
+            {
+                FirstName = "Satan's",
+                LastName = "Your Father",
+                Phone = "666-666-6666",
+                OcEmail = "bobsyouruncle@test.com"
+            });
 
             Assert.IsNotNull(file);
         }
@@ -116,7 +122,13 @@ namespace IndivisibleVCF.Tests.Controllers
                 }
             };
 
-            var file = controller.DownloadVcfFileResult(searchResult, 2);
+            var file = controller.DownloadVcfFileResult(new ReprensentativeContactInfo()
+            {
+                FirstName = "Satan's",
+                LastName = "Your Father",
+                Phone = "666-666-6666",
+                OcEmail = "bobsyouruncle@test.com"
+            });
 
             Assert.IsTrue(file.ContentType == "vcf");
         }        
