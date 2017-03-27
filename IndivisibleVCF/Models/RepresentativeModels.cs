@@ -84,6 +84,11 @@ namespace IndivisibleVCF.Models
         [JsonProperty(propertyName: "youtube_id")]
         public string YoutubeId { get; set; }
 
+        /// <summary>
+        /// The vCard serialization is built into the contact info class. I'm not sure if this sort of thing 
+        /// is best practice or not.
+        /// </summary>
+        /// <returns></returns>
         public string BuildVCard()
         {
             var strvCardBuilder = new StringBuilder();
@@ -112,28 +117,6 @@ namespace IndivisibleVCF.Models
                 strvCardBuilder.AppendLine("URL;VALUE=uri:" + Website);
             }
             strvCardBuilder.AppendLine("END:VCARD");
-
-            //var strvCardBuilder = new StringBuilder();
-            //strvCardBuilder.AppendLine("BEGIN:VCARD");
-            //strvCardBuilder.AppendLine("VERSION:2.1");
-            //strvCardBuilder.AppendLine("N:" + LastName + ";" + FirstName);
-            //strvCardBuilder.AppendLine("FN:" + FirstName + " " + LastName);
-            //strvCardBuilder.Append("ADR;HOME;PREF:;;");
-            //strvCardBuilder.Append(Address + ";");
-            //strvCardBuilder.Append(City + ";;");
-            //strvCardBuilder.AppendLine(Country);
-            //strvCardBuilder.AppendLine("ORG:" + Company);
-            //strvCardBuilder.AppendLine("TITLE:" + Title);
-            //strvCardBuilder.AppendLine("TEL;WORK;VOICE:" + Phone);
-            //strvCardBuilder.AppendLine("EMAIL;PREF;INTERNET:" + OcEmail);
-            //strvCardBuilder.AppendLine("PHOTO;ENCODING=BASE64;TYPE=JPEG:");
-            //strvCardBuilder.AppendLine(Convert.ToBase64String(Image));
-            //strvCardBuilder.AppendLine(string.Empty);
-            //strvCardBuilder.AppendLine(string.Empty);
-            //strvCardBuilder.AppendLine(string.Empty);
-            //strvCardBuilder.AppendLine("END:VCARD");
-                     
-
             return strvCardBuilder.ToString();
         }
     }
