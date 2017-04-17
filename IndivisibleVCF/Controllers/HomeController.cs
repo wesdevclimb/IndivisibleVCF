@@ -32,16 +32,6 @@ namespace IndivisibleVCF.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
         //The Authorize Attribute is not enough security
         //I need to protect from signed in users attempting to access other user data other than their own
         [Authorize]

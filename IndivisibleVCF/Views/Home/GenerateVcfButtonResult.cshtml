@@ -13,9 +13,13 @@
 {  
     <div class="form-group">
         <div class="btn-group">
-            <label>@result.Title @result.FirstName @result.LastName</label>
-            <br/>
-            @Html.ActionLink("Download File Result", "DownloadVcfFileResult", result )
+            <address>
+                <h3>@result.Title @result.FirstName @result.LastName</h3>
+                <span>@result.Office</span> <br/>
+                <a href="tel:@result.Phone">@result.Phone</a> <br/>
+                <a href="mailto:@result.OcEmail">@result.OcEmail</a> <br/>                
+                <input type="button" value="Download File Result" onclick="location.href='@Url.Action("DownloadVcfFileResult", result)'" />              
+            </address>
         </div>
     </div>   
 }

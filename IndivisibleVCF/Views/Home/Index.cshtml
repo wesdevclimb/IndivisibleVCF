@@ -2,6 +2,7 @@
     ViewBag.Title = "VCF Generator";
 }
 
+
 <div class="jumbotron">
     <h1>Indivisble VCF Generator</h1>
     <h2>What is IndivicibleVCF?</h2>
@@ -15,9 +16,22 @@
         Outlook, iOS, and Android.</p>
     <h2>Goals of IndivisibleVCF</h2>
     <p>One goal of the project is to help users feel more comfortable contacting their representatives. Instead of looking up their representative's
-    office number from a Google search then dialing the digits, IndivisibleVCF provides a way for users to store that same contact info in their
-    mobile devices as a contact just like all the other people they speak to on a regualar basis, e.g. friends, family, and coworkers.</p>
+        office number from a Google search then dialing the digits, IndivisibleVCF provides a way for users to store that same contact info in their
+        mobile devices as a contact just like all the other people they speak to on a regualar basis, e.g. friends, family, and coworkers.</p>
+    <div>
+        @using (Html.BeginForm("GenerateVcfButton", "Home", FormMethod.Get))
+        {
+            <div class="form-group">
+                <div class="text-center col-lg-12">
+                    <input type="submit" value="Start Using Indivisble VCF" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
+
+
 
 <div class="row">
     <div class="col-md-4">
